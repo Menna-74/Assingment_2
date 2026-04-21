@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+// Middleware to parse JSON
 app.use(express.json());
 
+// Logging Middleware
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.url}`);
     next();
@@ -25,8 +27,7 @@ const users = [
 ];
 
 app.get("/users", (req, res) => {
-    res.status(200);
-    res.json(users);
+    res.status(200).json(users);
 });
 
 app.listen(port, () => {
